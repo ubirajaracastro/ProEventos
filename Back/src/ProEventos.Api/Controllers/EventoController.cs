@@ -13,9 +13,7 @@ namespace ProEventos.Api.Controllers
     public class EventoController : ControllerBase
     {
         private readonly List<Evento> Eventos = new List<Evento>();
-        private readonly ILogger<EventoController> _logger;
-
-        
+        private readonly ILogger<EventoController> _logger;      
 
         public EventoController(ILogger<EventoController> logger)
         {
