@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Back", "Back", "{AB08ABC5-2B43-4959-AAC7-03B3FCB78F84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{217EE8F5-0E62-48D7-986B-EA8BD2557502}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProEventos.Api", "Back\src\ProEventos.Api\ProEventos.Api.csproj", "{FE7036DA-0BEF-4EDB-B205-4656EF643972}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE7036DA-0BEF-4EDB-B205-4656EF643972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE7036DA-0BEF-4EDB-B205-4656EF643972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE7036DA-0BEF-4EDB-B205-4656EF643972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE7036DA-0BEF-4EDB-B205-4656EF643972}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{217EE8F5-0E62-48D7-986B-EA8BD2557502} = {AB08ABC5-2B43-4959-AAC7-03B3FCB78F84}
+		{FE7036DA-0BEF-4EDB-B205-4656EF643972} = {217EE8F5-0E62-48D7-986B-EA8BD2557502}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {406DD6DC-48AC-4788-9744-B10511747422}
+	EndGlobalSection
+EndGlobal
