@@ -1,10 +1,45 @@
-<h1>Eventos</h1>
+<h2>Eventos</h2>
 
-<div *ngFor="let evento of eventos">
+<!-- <div *ngFor="let evento of eventos">
     <b>Tema:</b>{{evento.nome}}<br>
     <b>Data:</b>{{evento.data}}<br>
     <b>Local:</b>{{evento.local}}<br>
     <b>Lote:</b>{{evento.lote}}<br>
     <b>Qtde Pessoas:</b>{{evento.qtdePessoas}}
     <hr>
+</div> -->
+
+<div class="form=inline">
+<div class="form-group mb-2">
+  <input type="text" class="form-control mr-2" placeholder="Buscar" [(ngModel)]="filtroLista"><br>
+  <!-- <button class="btn btn-primary">Buscar</button>   -->
 </div>
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Data</th>
+        <th scope="col">Local</th>
+        <th scope="col">Lote</th>
+        <th scope="col">Qde Pessoas</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let evento of eventosFiltrados">
+        <td></td>
+        <td>{{evento.nome}}</td>
+        <td>{{evento.data}}</td>
+        <td>{{evento.local}}</td>
+        <td>{{evento.lote}}</td>
+        <td>{{evento.qtdePessoas}}</td>
+        <td>
+            <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
+            <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+          </td>      
+      </tr>     
+    </tbody>
+  </table>
