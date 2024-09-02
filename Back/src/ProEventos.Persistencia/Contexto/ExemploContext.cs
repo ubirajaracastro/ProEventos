@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProEventos.Api.Models
+namespace ProEventos.Persistencia.Contexto
 {
-    public class NumerosSorte
+    public class ExemploContext
     {
         
     }
