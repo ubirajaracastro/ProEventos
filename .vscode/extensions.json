@@ -1,5 +1,7 @@
 {
     "recommendations": [
-        "patcx.vscode-nuget-gallery"
+        "patcx.vscode-nuget-gallery",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.vscodeintellicode-csharp"
     ]
 }

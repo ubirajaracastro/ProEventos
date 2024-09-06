@@ -5,8 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using ProEventos.Persistencia;
+using ProEventos.Aplicacao;
+using ProEventos.Aplicacao.Contratos;
+using ProEventos.Persistencia.Contratos;
 using ProEventos.Persistencia.Contexto;
+using ProEventos.Persistencia;
 
 namespace ProEventos.Api
 {
@@ -21,18 +24,17 @@ namespace ProEventos.Api
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-          services.AddCors(options =>
-            {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("http://localhost:4200")
-                                    .AllowAnyHeader()
-                                    .AllowAnyMethod());
-            });
-
-          services.AddControllers();
+        {         
+          services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = 
+                                    Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    );
+             
+          services.AddScoped<IEventoService, EventoService>();         
+          services.AddScoped<IEventoPersistencia, EventoPersistencia>();
+          services.AddScoped<IGeralPersistencia, GeralPersistencia>();
+                    
           services.AddDbContext<ProEventoContext>(optionns =>
-           optionns.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+          optionns.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 
             services.AddSwaggerGen(c =>

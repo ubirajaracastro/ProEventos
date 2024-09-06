@@ -14,9 +14,10 @@ namespace ProEventos.Persistencia.Contexto
         public DbSet<Lote> Lote { get; set; }
         public DbSet<Palestrante> Palestrante { get; set; }
         public DbSet<PalestranteEvento> PalestrantesEvento { get; set; }
-        public DbSet<RedeSocial> RedesSociai { get; set; }  
+        public DbSet<RedeSocial> RedesSocial { get; set; }          
 
 
+        #region  OnModelCreating
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 
          {
@@ -33,6 +34,7 @@ namespace ProEventos.Persistencia.Contexto
                  .WithOne(rs => rs.Palestrante)
                  .OnDelete(DeleteBehavior.Cascade);
          }
+         #endregion
 
     }
 }
