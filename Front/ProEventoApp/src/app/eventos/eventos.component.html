@@ -22,8 +22,7 @@
         <th scope="col">#</th>
         <th scope="col">Nome</th>
         <th scope="col">Data</th>
-        <th scope="col">Local</th>
-        <th scope="col">Lote</th>
+        <th scope="col">Local</th>       
         <th scope="col">Qde Pessoas</th>
         <th>Opções</th>
       </tr>
@@ -31,11 +30,10 @@
     <tbody>
       <tr *ngFor="let evento of eventosFiltrados">
         <td></td>
-        <td>{{evento.nome}}</td>
-        <td>{{evento.data}}</td>
-        <td>{{evento.local}}</td>
-        <td>{{evento.lote}}</td>
-        <td>{{evento.qtdePessoas}}</td>
+        <td>{{evento.tema}}</td>
+        <td>{{evento.dataEvento}}</td>
+        <td>{{evento.local}}</td>       
+        <td>{{evento.qtdPessoas}}</td>
         <td>
             <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
             <button type="button" class="btn btn-danger btn-sm">Excluir</button>

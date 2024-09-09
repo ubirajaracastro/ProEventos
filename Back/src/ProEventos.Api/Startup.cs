@@ -35,6 +35,7 @@ namespace ProEventos.Api
                     
           services.AddDbContext<ProEventoContext>(optionns =>
           optionns.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+          services.AddCors();
 
 
             services.AddSwaggerGen(c =>
@@ -52,11 +53,16 @@ namespace ProEventos.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProEventos.Api v1"));
             }
+            
 
-            app.UseCors("AllowSpecificOrigin");
-            app.UseHttpsRedirection();
-            app.UseRouting();
-            app.UseAuthorization();
+             app.UseRouting();
+             app.UseAuthorization();
+             app.UseCors(x => x.AllowAnyHeader()
+                              .AllowAnyMethod()
+                              .AllowAnyOrigin());
+
+            //app.UseHttpsRedirection();
+          
 
             app.UseEndpoints(endpoints =>
             {
