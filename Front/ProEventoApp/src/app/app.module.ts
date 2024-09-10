@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap/modal';
+// import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { PalestrantesComponent } from './palestrantes/palestrantes.component';
@@ -26,10 +26,8 @@ import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
     AppRoutingModule,   
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule,   
-    ModalModule.forRoot()
+    HttpClientModule
    
-
   ],
   providers: [
     EventoService
