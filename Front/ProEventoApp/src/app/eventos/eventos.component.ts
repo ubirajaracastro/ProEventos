@@ -10,7 +10,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class EventosComponent implements OnInit {
   
-  modalRef?: BsModalRef;
+  modalRef: BsModalRef;
   public eventos: Evento[]=[];
   public eventosFiltrados:Evento[]=[];; 
   private _filtroLista: string='';
