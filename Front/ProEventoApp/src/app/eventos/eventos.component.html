@@ -31,12 +31,17 @@
       <tr *ngFor="let evento of eventosFiltrados">
         <td></td>
         <td>{{evento.tema}}</td>
-        <td>{{evento.dataEvento}}</td>
+        <td>{{evento.dataEvento | DateFormatPipe}}</td>
         <td>{{evento.local}}</td>       
         <td>{{evento.qtdPessoas}}</td>
         <td>
-            <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
-            <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+            <button type="button" class="btn btn-primary btn-sm mr-2">NP
+              <i class="fa fa-edit"></i>
+            </button>
+
+            <button type="button" class="btn btn-danger btn-sm"  (click)="openModal(template)">
+              <i class="fa fa-trash"></i>
+            </button>
           </td>      
       </tr>     
     </tbody>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EventoService } from '../services/Evento.service';
+import { Evento } from '../models/Evento';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-eventos',
@@ -8,8 +10,9 @@ import { EventoService } from '../services/Evento.service';
 })
 export class EventosComponent implements OnInit {
   
-  public eventos: any=[];
-  public eventosFiltrados: any=[]; 
+  modalRef?: BsModalRef;
+  public eventos: Evento[]=[];
+  public eventosFiltrados:Evento[]=[];; 
   private _filtroLista: string='';
   
 
@@ -17,13 +20,16 @@ export class EventosComponent implements OnInit {
     return this._filtroLista;
   }
 
-  constructor(private eventoService: EventoService) { }  
+  constructor(
+    private eventoService: EventoService,    
+    private modalService: BsModalService) { }  
 
   public set filtroLista(value:string) {
     this._filtroLista = value;
     this.eventosFiltrados=this.filtroLista ? this.filtrarEventos(this.filtroLista): this.eventos; 
 
   }
+
 
   filtrarEventos(filtrarPor: string): any {
     filtrarPor=filtrarPor.toLocaleLowerCase();
@@ -40,15 +46,28 @@ export class EventosComponent implements OnInit {
   }
 
   public getEventos():void {
+    
     this.eventoService.getEventos().subscribe(
-      response => {
-      this.eventos = response,
-      this.eventosFiltrados = this.eventos;
+      (eventos: Evento[]) => {
+        this.eventos = eventos,
+        this.eventosFiltrados = this.eventos;
      },
      error => console.log(error)
      );
   }
      
-     
+  openModal(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(): void {
+    
+    this.modalRef.hide();
+    //this.toastr.success('O Evento foi deletado com Sucesso.', 'Deletado!');
+  }
+
+  decline(): void {
+    this.modalRef.hide();
+  }
       
   }

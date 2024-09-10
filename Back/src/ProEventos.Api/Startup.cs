@@ -34,7 +34,7 @@ namespace ProEventos.Api
           services.AddScoped<IGeralPersistencia, GeralPersistencia>();
                     
           services.AddDbContext<ProEventoContext>(optionns =>
-          optionns.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                   optionns.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
           services.AddCors();
 
 
