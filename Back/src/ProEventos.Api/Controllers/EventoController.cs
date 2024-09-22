@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProEventos.Aplicacao.Contratos;
-using ProEventos.Dominio;
+using ProEventos.Aplicacao.Dto;
 
 namespace ProEventos.Api.Controllers
 {
@@ -70,13 +70,13 @@ namespace ProEventos.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(Evento model)
+        public async Task<ActionResult> Post(EventoDto model)
         {
             try
             {
                 var evento = await _eventoService.AddEvento(model);
-                if (evento == null) return BadRequest("Erro ao tentar adicionar evento.");
-
+                if (evento == null) return NoContent();
+                
                 return Ok(evento);
             }
             catch (Exception ex)
@@ -86,18 +86,19 @@ namespace ProEventos.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, Evento model)
+        public async Task<ActionResult> Put(int id, EventoDto model)
         {
             try
             {
                 var evento = await _eventoService.UpdateEvento(id, model);
-                if (evento == null) return BadRequest("Erro ao tentar adicionar evento.");
+                if (evento == null) return NoContent();
 
                 return Ok(evento);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Erro ao tentar atualizar eventos. Erro: {ex.Message}");
+                return this.StatusCode(500,
+                    $"Erro ao tentar atualizar eventos. Erro: {ex.Message}");
             }
         }
 
@@ -106,7 +107,15 @@ namespace ProEventos.Api.Controllers
         {
             try
             {
-                return await _eventoService.DeleteEvento(id) ? Ok("Deletado") : BadRequest("Evento não deletado");
+                var evento = await _eventoService.GetEventoByIdAsync(id, true);
+                if (evento == null) return NoContent();
+
+                 return await _eventoService.DeleteEvento(id) 
+                       ? Ok(new { message = "Deletado" }) 
+                       : throw new Exception("Ocorreu um problema ao tentar deletar Evento.");
+
+
+
             }
             catch (Exception ex)
             {
